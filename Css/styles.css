@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+.iconSize {
+  width: 1.5em;
+}
+
+.img-size {
+  width: 8.5rem;
+}
+
+.pre-size {
+  height: 15rem;
+}
