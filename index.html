@@ -47,7 +47,7 @@
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-  5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+            d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
           />
         </svg>
       </button>
@@ -59,18 +59,33 @@
           <h1 class="lead fs-3">Assinatura automática</h1>
         </div>
         <div class="card-body h-100">
-          <div class="mb-3">
-            <label for="customerCode" class="form-label">Matrícula</label>
-            <input
-              type="text"
-              class="form-control bg-secondary-subtle w-50"
-              id="customerCode"
-              aria-describedby="addCode"
-            />
-            <div id="addCode" class="form-text">Insira sua matrícula acima</div>
-          </div>
+          <form class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="customerCode" class="form-label">Matrícula</label>
+              <input
+                type="text"
+                class="form-control bg-secondary-subtle w-50"
+                id="customerCode"
+                aria-describedby="addCode"
+                required
+              />
+              <div id="addCode" class="form-text">
+                Insira sua matrícula acima
+              </div>
+              <div class="valid-feedback">Ok</div>
+              <div class="invalid-feedback">Insira alguma matrícula!</div>
+            </div>
+            <div class="mb-3">
+              <input
+                type="submit"
+                value="Enviar"
+                id="sendForm"
+                class="btn bg-secondary-subtle"
+              />
+            </div>
+          </form>
           <p class="card-text mb-1">Visualização prévia</p>
-          <div class="border rounded w-100" id="preview">test</div>
+          <div class="border p-2 rounded w-100" id="preview">test</div>
         </div>
       </div>
     </div>

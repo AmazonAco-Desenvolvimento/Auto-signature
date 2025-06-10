@@ -1,6 +1,21 @@
 const toggleEl = document.getElementById("toggleLight");
 const sunEl = document.getElementById("sunIco");
 const moonEl = document.getElementById("moonIco");
+const customerCodeEl = document.getElementById("customerCode");
+
+const sendEl = document.getElementById("sendForm");
+
+const form = document.querySelector(".needs-validation");
+form.addEventListener("submit", (e) => {
+  if (!form.checkValidity()) {
+    e.preventDefault();
+  } else {
+    console.log(customerCodeEl.value);
+    e.preventDefault();
+  }
+
+  form.classList.add("was-validated");
+});
 
 toggleEl.addEventListener("click", () => {
   if (document.documentElement.getAttribute("data-bs-theme") == "light") {
