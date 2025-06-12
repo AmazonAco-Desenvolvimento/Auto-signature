@@ -61,7 +61,9 @@
         <div class="card-body h-100">
           <form class="needs-validation" novalidate>
             <div class="mb-3">
-              <label for="customerCode" class="form-label">Matrícula</label>
+              <label for="customerCode" class="form-label"
+                >Nome do usuário(Logon)</label
+              >
               <input
                 type="text"
                 class="form-control bg-secondary-subtle w-50"
@@ -70,10 +72,10 @@
                 required
               />
               <div id="addCode" class="form-text">
-                Insira sua matrícula acima
+                Insira o nome do usuário acima
               </div>
-              <div class="valid-feedback">Ok</div>
-              <div class="invalid-feedback">Insira alguma matrícula!</div>
+              <div class="valid-feedback">Correto!</div>
+              <div class="invalid-feedback">Insira algum usuário!</div>
             </div>
             <div class="mb-3">
               <input
@@ -84,12 +86,13 @@
               />
             </div>
           </form>
-          <p class="card-text mb-1">Visualização prévia</p>
+          <p class="card-text mb-1">Preview</p>
           <div class="border p-2 rounded w-100" id="preview">test</div>
         </div>
       </div>
     </div>
     <script src="bootstrap-5.3.6-dist/bootstrap-5.3.6-dist/js/bootstrap.bundle.min.js"></script>
     <script src="Js/script.js"></script>
+    <script src="Js/req.js"></script>
   </body>
 </html>
