@@ -1,7 +1,8 @@
 let responseUser = "";
+let responseVerification;
 
-async function get_ad_userdata() {
-  const url = "http://localhost:3000/api/user/ricardo.pinheiro";
+async function get_ad_userdata(username) {
+  const url = `http://localhost:3000/api/user/${username}`;
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -9,10 +10,10 @@ async function get_ad_userdata() {
     }
 
     const json = await response.json();
-    console.log(json);
+    responseUser = json;
+    responseVerification = true;
   } catch (error) {
     console.log(error.message);
+    responseVerification = false;
   }
 }
-
-get_ad_userdata();

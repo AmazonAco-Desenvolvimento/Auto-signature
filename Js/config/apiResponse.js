@@ -16,6 +16,7 @@ const config = {
 
 app.get("/api/user/:username", (req, res) => {
   let client = ldapJs.createClient({ url: config.url });
+  let userfound = false;
 
   client.bind(config.username, config.password, (error) => {
     if (error) {
@@ -28,13 +29,18 @@ app.get("/api/user/:username", (req, res) => {
 
   client.search(
     config.baseDN,
-    { scope: "sub", filter: `sAMAccountname=${req.params.username}` },
+    {
+      scope: "sub",
+      filter: `sAMAccountname=${req.params.username}`,
+      attributes: ["cn", "description", "department", "mail"],
+    },
     (err, user) => {
       if (err) {
         res.status(500).json("Error");
         return;
       }
       user.on("searchEntry", (entry) => {
+        userfound = true;
         res.json(entry.pojo.attributes);
         client.unbind((err) => {
           if (err) {
@@ -44,6 +50,7 @@ app.get("/api/user/:username", (req, res) => {
           }
         });
       });
+
       user.on("error", (result) => {
         console.log("Status: ", result.status);
         client.unbind((err) => {
@@ -53,7 +60,21 @@ app.get("/api/user/:username", (req, res) => {
             console.log("Disconnecting...");
           }
         });
-        res.status(404).json({ message: "user not found" });
+        res.status(404).json({ message: "LDAP error" });
+      });
+
+      user.on("end", (result) => {
+        if (!userfound) {
+          console.log("User not found");
+          res.status(404).json({ error: "User not found" });
+          client.unbind((err) => {
+            if (err) {
+              console.log("error to unbind");
+            } else {
+              console.log("Disconnecting...");
+            }
+          });
+        }
       });
     }
   );

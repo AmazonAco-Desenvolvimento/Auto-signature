@@ -58,7 +58,7 @@
         <div class="card-header">
           <h1 class="lead fs-3">Assinatura automática</h1>
         </div>
-        <div class="card-body h-100">
+        <div class="card-body">
           <form class="needs-validation" novalidate>
             <div class="mb-3">
               <label for="customerCode" class="form-label"
@@ -74,7 +74,6 @@
               <div id="addCode" class="form-text">
                 Insira o nome do usuário acima
               </div>
-              <div class="valid-feedback">Correto!</div>
               <div class="invalid-feedback">Insira algum usuário!</div>
             </div>
             <div class="mb-3">
@@ -83,16 +82,41 @@
                 value="Enviar"
                 id="sendForm"
                 class="btn bg-secondary-subtle"
+                onclick="checkUsername(customerCode)"
               />
             </div>
           </form>
           <p class="card-text mb-1">Preview</p>
-          <div class="border p-2 rounded w-100" id="preview">test</div>
+          <div class="border p-2 rounded w-100" id="preview">
+            <ul class="list-group" id="data-list"></ul>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div
+        id="liveToast"
+        class="toast text-bg-danger"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <strong class="me-auto">Erro!</strong>
+          <small>Agora!</small>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="close"
+          ></button>
+        </div>
+        <div class="toast-body">O nome de usuário inserido não existe!</div>
+      </div>
+    </div>
     <script src="bootstrap-5.3.6-dist/bootstrap-5.3.6-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="Js/script.js"></script>
     <script src="Js/req.js"></script>
+    <script src="Js/script.js"></script>
   </body>
 </html>
