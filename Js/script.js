@@ -89,10 +89,10 @@ const img = new Image();
 img.src = "/assets/imgs/Assinatura 21 Anos 1.png";
 img.onload = function () {
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-};
-ctx.font = "30px Arial";
-ctx.fillStyle = "white";
-ctx.textAlign = "center";
-ctx.textBaseline = "middle";
+  ctx.font = "30px Arial";
+  ctx.fillStyle = "white";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
 
-ctx.fillText("Hello, World!", canvas.width / 2, canvas.height / 2);
+  ctx.fillText("Hello, World!", canvas.width / 2, canvas.height / 2);
+};
