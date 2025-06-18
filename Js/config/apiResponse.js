@@ -32,7 +32,7 @@ app.get("/api/user/:username", (req, res) => {
     {
       scope: "sub",
       filter: `sAMAccountname=${req.params.username}`,
-      attributes: ["cn", "description", "department", "mail"],
+      attributes: ["cn", "description", "department", "mail", "physicalDeliveryOfficeName", "telephoneNumber"],
     },
     (err, user) => {
       if (err) {
@@ -62,7 +62,6 @@ app.get("/api/user/:username", (req, res) => {
         });
         res.status(404).json({ message: "LDAP error" });
       });
-
       user.on("end", (result) => {
         if (!userfound) {
           console.log("User not found");
