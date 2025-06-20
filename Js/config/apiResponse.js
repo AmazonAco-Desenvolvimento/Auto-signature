@@ -32,7 +32,13 @@ app.get("/api/user/:username", (req, res) => {
     {
       scope: "sub",
       filter: `sAMAccountname=${req.params.username}`,
-      attributes: ["cn", "description", "department", "mail", "physicalDeliveryOfficeName", "telephoneNumber"],
+      attributes: [
+        "cn",
+        "description",
+        "department",
+        "mail",
+        "physicalDeliveryOfficeName",
+      ],
     },
     (err, user) => {
       if (err) {
